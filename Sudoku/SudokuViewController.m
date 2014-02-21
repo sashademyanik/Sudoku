@@ -7,6 +7,7 @@
 //
 
 #import "SudokuViewController.h"
+#import "SudokuBoard.h"
 
 @interface SudokuViewController ()
 
@@ -18,6 +19,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    SudokuBoard *sudokuBoardView = [[SudokuBoard alloc] initWithFrame:CGRectMake(10, 10, 130, 130)];
+    sudokuBoardView.backgroundColor = [UIColor whiteColor];
+    sudokuBoardView.contentMode = UIViewContentModeRedraw;
+    [self.view addSubview:sudokuBoardView];
 }
 
 - (void)didReceiveMemoryWarning

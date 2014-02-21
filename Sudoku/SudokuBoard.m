@@ -15,6 +15,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        NSLog(@"ChessBoardView:initWithFrame:");
+        _selectedRow = _selectedColumn = -1;
+    }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]){
+        NSLog(@"ChessBoardView:initWithCoder:");
+        _selectedRow = _selectedColumn = -1;
+        // NO TOUCHY [self addTapGestureRecognizer];
     }
     return self;
 }
@@ -36,14 +47,14 @@
     
     const CGFloat size = boardSquare.size.width;
     
-    CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
+    //CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
     CGContextSetLineWidth(context, 5);
     CGContextStrokeRect(context, boardSquare);
     
-    const CGFloat squareSize = size/8;
-    CGContextSetRGBFillColor(context, 0, 0, 0, 1);
-    for (int row = 0 ; row < 8; row++) {
-        for (int col = 0; col < 8; col++) {
+    const CGFloat squareSize = size/9;
+    //CGContextSetRGBFillColor(context, 0, 0, 0, 1);
+    for (int row = 0 ; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
             if ((col + row) % 2 == 1){
                 CGContextFillRect(context,
                                   CGRectMake(boardSquare.origin.x + col *squareSize ,
@@ -54,7 +65,7 @@
     }
     
     if (self.selectedRow >= 0 && self.selectedColumn >= 0) {
-        CGContextSetRGBFillColor(context, 0, 0.9, 0.2, 0.7);
+        //CGContextSetRGBFillColor(context, 0, 0, 0, 0.7);
         //[[UIColor blueColor] setFill];
         CGContextFillRect(context, CGRectMake(boardSquare.origin.x + self.selectedColumn*squareSize, boardSquare.origin.y + self.selectedRow*squareSize, squareSize, squareSize));
     }
