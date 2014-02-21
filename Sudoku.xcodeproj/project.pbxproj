@@ -22,6 +22,7 @@
 		F7D2927518B6CB0D0034AAF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D2925418B6CB0D0034AAF2 /* UIKit.framework */; };
 		F7D2927D18B6CB0D0034AAF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7D2927B18B6CB0D0034AAF2 /* InfoPlist.strings */; };
 		F7D2927F18B6CB0D0034AAF2 /* SudokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D2927E18B6CB0D0034AAF2 /* SudokuTests.m */; };
+		F7D2928A18B6CE3D0034AAF2 /* SudokuBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D2928918B6CE3D0034AAF2 /* SudokuBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		F7D2927A18B6CB0D0034AAF2 /* SudokuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SudokuTests-Info.plist"; sourceTree = "<group>"; };
 		F7D2927C18B6CB0D0034AAF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F7D2927E18B6CB0D0034AAF2 /* SudokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SudokuTests.m; sourceTree = "<group>"; };
+		F7D2928818B6CE3D0034AAF2 /* SudokuBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuBoard.h; sourceTree = "<group>"; };
+		F7D2928918B6CE3D0034AAF2 /* SudokuBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuBoard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				F7D2926518B6CB0D0034AAF2 /* Main_iPad.storyboard */,
 				F7D2926818B6CB0D0034AAF2 /* SudokuViewController.h */,
 				F7D2926918B6CB0D0034AAF2 /* SudokuViewController.m */,
+				F7D2928818B6CE3D0034AAF2 /* SudokuBoard.h */,
+				F7D2928918B6CE3D0034AAF2 /* SudokuBoard.m */,
 				F7D2926B18B6CB0D0034AAF2 /* Images.xcassets */,
 				F7D2925718B6CB0D0034AAF2 /* Supporting Files */,
 			);
@@ -257,6 +262,7 @@
 				F7D2926A18B6CB0D0034AAF2 /* SudokuViewController.m in Sources */,
 				F7D2925D18B6CB0D0034AAF2 /* main.m in Sources */,
 				F7D2926118B6CB0D0034AAF2 /* SudokuAppDelegate.m in Sources */,
+				F7D2928A18B6CE3D0034AAF2 /* SudokuBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
