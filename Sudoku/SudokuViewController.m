@@ -19,8 +19,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    SudokuBoard *sudokuBoardView = [[SudokuBoard alloc] initWithFrame:CGRectMake(10, 10, 130, 130)];
+    const CGRect myBounds = self.view.bounds;
+    const CGFloat size = (myBounds.size.width < myBounds.size.height) ? myBounds.size.width : myBounds.size.height - 5;
+    const CGPoint myCenter = CGPointMake(myBounds.size.width/2, myBounds.size.height/2);
+    const CGPoint origin = CGPointMake(myCenter.x - size/2, myCenter.y - size/2);
+
+    SudokuBoard *sudokuBoardView = [[SudokuBoard alloc] initWithFrame:CGRectMake(origin.x, origin.y, size, size)];
     sudokuBoardView.backgroundColor = [UIColor whiteColor];
     sudokuBoardView.contentMode = UIViewContentModeRedraw;
     [self.view addSubview:sudokuBoardView];

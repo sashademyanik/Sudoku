@@ -40,7 +40,7 @@
 }
 
 - (void)drawRect:(CGRect)rect{
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:30], NSForegroundColorAttributeName: [UIColor blackColor] };
+    //NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:30], NSForegroundColorAttributeName: [UIColor blackColor] };
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     const CGRect boardSquare = [self boardSquare];
@@ -56,10 +56,10 @@
     for (int row = 0 ; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
             if ((col + row) % 2 == 1){
-                CGContextFillRect(context,
+                /*CGContextFillRect(context,
                                   CGRectMake(boardSquare.origin.x + col *squareSize ,
                                              boardSquare.origin.y + row *squareSize,
-                                             squareSize, squareSize));
+                                             squareSize, squareSize));*/
             }
         }
     }
