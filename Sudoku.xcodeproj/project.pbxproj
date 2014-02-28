@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F76597BA18C01D3B00AF37A5 /* MenuButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = F76597B918C01D3B00AF37A5 /* MenuButtonView.m */; };
 		F7D2925118B6CB0D0034AAF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D2925018B6CB0D0034AAF2 /* Foundation.framework */; };
 		F7D2925318B6CB0D0034AAF2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D2925218B6CB0D0034AAF2 /* CoreGraphics.framework */; };
 		F7D2925518B6CB0D0034AAF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D2925418B6CB0D0034AAF2 /* UIKit.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F76597B818C01D3B00AF37A5 /* MenuButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuButtonView.h; sourceTree = "<group>"; };
+		F76597B918C01D3B00AF37A5 /* MenuButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuButtonView.m; sourceTree = "<group>"; };
 		F7D2924D18B6CB0D0034AAF2 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D2925018B6CB0D0034AAF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F7D2925218B6CB0D0034AAF2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,6 +128,8 @@
 				F7D2926918B6CB0D0034AAF2 /* SudokuViewController.m */,
 				F7D2928818B6CE3D0034AAF2 /* SudokuBoard.h */,
 				F7D2928918B6CE3D0034AAF2 /* SudokuBoard.m */,
+				F76597B818C01D3B00AF37A5 /* MenuButtonView.h */,
+				F76597B918C01D3B00AF37A5 /* MenuButtonView.m */,
 				F7D2926B18B6CB0D0034AAF2 /* Images.xcassets */,
 				F7D2925718B6CB0D0034AAF2 /* Supporting Files */,
 			);
@@ -262,6 +267,7 @@
 				F7D2926A18B6CB0D0034AAF2 /* SudokuViewController.m in Sources */,
 				F7D2925D18B6CB0D0034AAF2 /* main.m in Sources */,
 				F7D2926118B6CB0D0034AAF2 /* SudokuAppDelegate.m in Sources */,
+				F76597BA18C01D3B00AF37A5 /* MenuButtonView.m in Sources */,
 				F7D2928A18B6CE3D0034AAF2 /* SudokuBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +487,7 @@
 				F7D2928418B6CB0D0034AAF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7D2928518B6CB0D0034AAF2 /* Build configuration list for PBXNativeTarget "SudokuTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +496,7 @@
 				F7D2928718B6CB0D0034AAF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

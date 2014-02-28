@@ -52,27 +52,21 @@
     CGContextStrokeRect(context, boardSquare);
     
     const CGFloat squareSize = size/9;
-    CGContextSetRGBFillColor(context, 1, 1, 1, 1);
-    float lineWidth = 3.0;
+    //CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+    int gridSize = 9;
     
-    for (int row = 0 ; row < 9; row++) {
-        for (int col = 0; col < 9; col++) {
-            if ( (row % 3 == 0 || col % 3 == 0) && (row != 0 || col !=0)  ) {
-                lineWidth = 8.0;
+    
+    CGContextSetRGBFillColor(context, 1, 1, 1, 0.5);
+    for (int row = 0 ; row < gridSize; row++) {
+        for (int col = 0; col < gridSize; col++) {
+            //Set boxes for every box of 3
+            if (row % 3 == 0 && col % 3 == 0) {
+                CGContextStrokeRectWithWidth(context, CGRectMake(boardSquare.origin.x + row* squareSize, boardSquare.origin.y + col * squareSize,
+                                                                 squareSize * 3, squareSize * 3), 5.0);
             }
-            else{
-                lineWidth = 3.0;
-            }
-            UIColor * redColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
-            CGRect strokeRect = CGRectMake(boardSquare.origin.x + col *squareSize ,
-                                                       boardSquare.origin.y + row *squareSize,
-                                           squareSize-1, squareSize-1);
-            CGContextSetStrokeColorWithColor(context, redColor.CGColor);
-            CGContextSetLineWidth(context, lineWidth);
-            CGContextStrokeRect(context, strokeRect);
-
-            CGContextFillRect(context,
-                              strokeRect);
+            CGContextStrokeRectWithWidth(context, CGRectMake(boardSquare.origin.x + col *squareSize ,
+                                                             boardSquare.origin.y + row *squareSize,
+                                                             squareSize-1, squareSize-1), 1.0);
             
         }
     }
