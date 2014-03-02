@@ -21,13 +21,27 @@
     return self;
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]){
-        NSLog(@"ChessBoardView:initWithCoder:");
-        _selectedRow = _selectedColumn = -1;
-        // NO TOUCHY [self addTapGestureRecognizer];
-    }
-    return self;
+-(void)handleFingerTap:(UIGestureRecognizer*)sender {
+    const CGPoint tapPoint = [sender locationInView:sender.view];
+    const CGRect square = [self boardSquare];
+    const CGFloat delta = square.size.height/3;
+    const CGFloat d = delta/3;
+    
+    const int col = (int)((tapPoint.x - square.origin.x)/d);
+    const int row = (int)((tapPoint.y - square.origin.y)/d);
+    if (0 <= row && row < 9 && 0 <= col && col < 9)
+        if (row != _selectedRow || col != _selectedColumn)
+            //if (self != nil && ![self numberIsFixedAtRow:row Column:col]) {
+                _selectedRow = row;
+                _selectedColumn = col;
+                [self setNeedsDisplay];
+            //}
+}
+
+-(void)addTapGestureRecognizer{
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleFingerTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tapGestureRecognizer];
 }
 
 -(CGRect)boardSquare {
@@ -40,21 +54,16 @@
 }
 
 - (void)drawRect:(CGRect)rect{
-    //NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:30], NSForegroundColorAttributeName: [UIColor blackColor] };
+    
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     const CGRect boardSquare = [self boardSquare];
-    
     const CGFloat size = boardSquare.size.width;
-    
     //CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
     CGContextSetLineWidth(context, 5);
     CGContextStrokeRect(context, boardSquare);
-    
     const CGFloat squareSize = size/9;
-    //CGContextSetRGBFillColor(context, 1, 1, 1, 1);
     int gridSize = 9;
-    
     
     CGContextSetRGBFillColor(context, 1, 1, 1, 0.5);
     for (int row = 0 ; row < gridSize; row++) {
@@ -76,17 +85,26 @@
         //[[UIColor blueColor] setFill];
         CGContextFillRect(context, CGRectMake(boardSquare.origin.x + self.selectedColumn*squareSize, boardSquare.origin.y + self.selectedRow*squareSize, squareSize, squareSize));
     }
-
+    /*
+    const CGFloat delta = boardSquare.size.height/3;
+    const CGFloat d = delta/3;
+    const CGFloat s = d/3;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:30], NSForegroundColorAttributeName: [UIColor blackColor] };
     
+    const NSString *text = [NSString stringWithFormat:@"%d", 8];
+    const CGSize textSize = [text sizeWithAttributes:attributes];
+    const CGFloat x = boardSquare.origin.x + 0*d + 0.5*(d - textSize.width);
+    const CGFloat y = boardSquare.origin.y + 0*d + 0.5*(d - textSize.height);
+    const CGRect textRect = CGRectMake(x, y, textSize.width, textSize.height);
+    [text drawInRect:textRect withAttributes:attributes];
     
-    
-    
-    //const NSString *text = [NSString stringWithFormat:@"%d", number];
-    //const CGSize textSize = [text sizeWithAttributes:attributes];
-    //const CGFloat x = gridOrigin.x + col*d + 0.5*(d - textSize.width);
-    //const CGFloat y = gridOrigin.y + row*d + 0.5*(d - textSize.height);
-    //const CGRect textRect = CGRectMake(x, y, textSize.width, textSize.height);
-    //[text drawInRect:textRect withAttributes:attributes];
+    NSDictionary *attributesPen = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:10], NSForegroundColorAttributeName: [UIColor blackColor] };
+    const NSString *pencilText = [NSString stringWithFormat:@"%d",2];
+    const CGSize penTextSize = [text sizeWithAttributes:attributesPen];
+    const CGFloat penX = boardSquare.origin.x + 0 + 0.5 * (s- penTextSize.width);
+    const CGFloat penY = boardSquare.origin.y + 0 + 0.5 * (s - penTextSize.height);
+    const CGRect penText = CGRectMake(penX,penY, penTextSize.width, penTextSize.height);
+    [pencilText drawInRect: penText withAttributes: attributesPen]; */
     
 }
 

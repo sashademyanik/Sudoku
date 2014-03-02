@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SudokuViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *BoardView;
+@property (weak, nonatomic) IBOutlet UIView *ButtonView;
 
 @end

@@ -14,37 +14,65 @@
 
 @end
 
-@implementation SudokuViewController
+@implementation SudokuViewController{
+    SudokuBoard *boardView;
+    MenuButtonView *buttonsView;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    const CGRect myBounds = self.view.bounds;
-    const CGFloat size = (myBounds.size.width < myBounds.size.height) ? myBounds.size.width : myBounds.size.height - 5;
-    const CGPoint myCenter = CGPointMake(myBounds.size.width/2, myBounds.size.height/2);
-    const CGPoint origin = CGPointMake(myBounds.origin.x, myBounds.origin.y + [UIApplication sharedApplication].statusBarFrame.size.height);
-    //const CGPoint origin = CGPointMake(myCenter.x - size/2, myCenter.y - size/2);
+    
+    const CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+    const CGRect viewBounds = self.view.bounds;
+    
+    const CGFloat statusBarHeight = statusBarFrame.size.height;
+    const float boardSize = viewBounds.size.width;
+    const float buttonHeight = viewBounds.size.height - boardSize - statusBarHeight;
 
-    SudokuBoard *sudokuBoardView = [[SudokuBoard alloc] initWithFrame:CGRectMake(origin.x, origin.y, size, size)];
-    sudokuBoardView.backgroundColor = [UIColor whiteColor];
-    sudokuBoardView.contentMode = UIViewContentModeRedraw;
+    boardView = [[SudokuBoard alloc] initWithFrame:CGRectMake(0, statusBarHeight, boardSize, boardSize)];
+    boardView.backgroundColor = [UIColor whiteColor];
+    boardView.contentMode = UIViewContentModeRedraw;
     
+    buttonsView = [[MenuButtonView alloc] initWithFrame:CGRectMake(0, boardSize + statusBarHeight, boardSize, buttonHeight)];
+    buttonsView.backgroundColor = [UIColor colorWithRed:0.2 green:1 blue:0.6 alpha:0.1];
     
-    const CGRect sudokuBounds = sudokuBoardView.bounds;
-    MenuButtonView *menuButtonView = [[MenuButtonView alloc] initWithFrame:CGRectMake(sudokuBounds.origin.x, sudokuBounds.origin.y + sudokuBounds.size.height, myBounds.size.width, myBounds.size.height - (sudokuBounds.origin.y + sudokuBounds.size.height) )];
-    menuButtonView.backgroundColor = [UIColor greenColor];
-    
-    
-    
-    [self.view addSubview:sudokuBoardView];
-    [self.view addSubview:menuButtonView];
+    [self.view addSubview:boardView];
+    [self.view addSubview:buttonsView];
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillLayoutSubviews {
+    
+    const CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+    const CGRect viewBounds = self.view.bounds;
+    const bool isPortrait = viewBounds.size.height >= viewBounds.size.width;
+    
+    if(isPortrait) {
+        const CGFloat statusBarHeight = statusBarFrame.size.height;
+        const float boardSize = viewBounds.size.width;
+        const float buttonHeight = viewBounds.size.height - boardSize - statusBarHeight;
+        boardView.frame = CGRectMake(0, statusBarHeight, boardSize, boardSize);
+        buttonsView.frame = CGRectMake(0, boardSize + statusBarHeight, boardSize, buttonHeight);
+    }else {
+        const CGFloat statusBarHeight = statusBarFrame.size.width;
+        const float boardSize = viewBounds.size.height - statusBarHeight;
+        const float buttonsWidth = viewBounds.size.width - boardSize;
+        boardView.frame = CGRectMake(0, statusBarHeight, boardSize, boardSize);
+        buttonsView.frame = CGRectMake(boardSize, statusBarHeight, buttonsWidth, boardSize);
+    }
+   
+}
+
+-(void)layoutSubviews {
+
 }
 
 @end
