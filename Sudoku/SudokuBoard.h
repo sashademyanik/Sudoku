@@ -13,6 +13,7 @@
 @property (readonly, assign, nonatomic) NSInteger selectedRow;
 @property (readonly, assign, nonatomic) NSInteger selectedColumn;
 
+-(CGRect)boardSquare;
 
 
 @end

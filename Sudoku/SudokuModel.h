@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SudokuModel : NSObject
+    
 
 -(id)init;
 -(void)freshGame:(NSString*)boardString;

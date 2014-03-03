@@ -12,39 +12,20 @@
     unsigned int SudokuBoard_game[9][9];
     unsigned int SudokuBoard_fixed[9][9];
     unsigned int SudokuBoard_pencil[9][9][3][3];
+    int arraySize;
+    int penSize;
     
-    
-    
-    
-    /*
-     const CGFloat delta = boardSquare.size.height/3;
-     const CGFloat d = delta/3;
-     const CGFloat s = d/3;
-     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:30], NSForegroundColorAttributeName: [UIColor blackColor] };
-     
-     const NSString *text = [NSString stringWithFormat:@"%d", 8];
-     const CGSize textSize = [text sizeWithAttributes:attributes];
-     const CGFloat x = boardSquare.origin.x + 0*d + 0.5*(d - textSize.width);
-     const CGFloat y = boardSquare.origin.y + 0*d + 0.5*(d - textSize.height);
-     const CGRect textRect = CGRectMake(x, y, textSize.width, textSize.height);
-     [text drawInRect:textRect withAttributes:attributes];
-     
-     NSDictionary *attributesPen = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:10], NSForegroundColorAttributeName: [UIColor blackColor] };
-     const NSString *pencilText = [NSString stringWithFormat:@"%d",2];
-     const CGSize penTextSize = [text sizeWithAttributes:attributesPen];
-     const CGFloat penX = boardSquare.origin.x + 0 + 0.5 * (s- penTextSize.width);
-     const CGFloat penY = boardSquare.origin.y + 0 + 0.5 * (s - penTextSize.height);
-     const CGRect penText = CGRectMake(penX,penY, penTextSize.width, penTextSize.height);
-     [pencilText drawInRect: penText withAttributes: attributesPen]; */
 }
 -(id)init{
+    arraySize = 9;
+    penSize = 3;
     
-    for (int i = 0; i < 9; i ++) {
-        for (int j = 0; j < 9; j++){
+    for (int i = 0; i < arraySize; i ++) {
+        for (int j = 0; j < arraySize; j++){
             SudokuBoard_game[i][j] = 0;
             SudokuBoard_fixed[i][j] = 0;
-            for (int k = 0; k < 3; k ++) {
-                for (int l = 0; l < 3 ; l++) {
+            for (int k = 0; k < penSize; k ++) {
+                for (int l = 0; l < penSize ; l++) {
                     SudokuBoard_pencil[i][j][k][l] = 0;
                 }
             }
@@ -73,14 +54,45 @@
 }
 
 -(BOOL)isConflictingEntryAtRow:(int)r Column:(int)c{
-    return YES;
+    BOOL conflict = NO;
+    int boxRow = r - r%penSize;
+    int boxCol = c - c%penSize;
+    int num = SudokuBoard_game[r][c];
+    
+    for (int i = 0; i < arraySize; i++) {
+        if (SudokuBoard_game[r][i] == num && i != c) {
+            conflict = YES;// Row conflict
+            return conflict;
+        }
+        if (SudokuBoard_game[i][c] == num && i != r) {
+            conflict = YES;//Column conflict
+            return conflict;
+        }
+    }
+    
+    //Boxrow and col is the starting point for the 3x3 square in which r,c is located
+    for (int i = 0; i < penSize; i++) {
+        for (int j = 0; j < penSize; j++) {
+            if (SudokuBoard_game[i + boxRow][j + boxCol] == num && (i+boxRow != r && j+boxCol != c)) {
+                conflict = YES;
+                return conflict;
+            }
+        }
+    }
+    
+    return conflict;
 }
 
 -(BOOL)anyPencilsSetAtRow:(int)r Column:(int)c{
-    BOOL isPencil = NO;/*
-    for (int i = 0; i < 3; <#increment#>) {
-        <#statements#>
-    }*/
+    BOOL isPencil = NO;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (SudokuBoard_pencil[r][c][i][j] != 0) {
+                isPencil = YES;
+                return isPencil;
+            }
+        }
+    }
     
     
     return isPencil;
