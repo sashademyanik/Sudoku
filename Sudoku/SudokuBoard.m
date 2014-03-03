@@ -21,6 +21,21 @@
     return self;
 }
 
+-(IBAction)handleTap:(UITapGestureRecognizer*)sender{
+    NSLog(@"handleTap");
+    const CGRect square = [self boardSquare];
+    const CGPoint tapPoint = [sender locationInView:self];
+    const CGFloat squareSize = square.size.width/9;
+    const int col = floor((tapPoint.x - square.origin.x)/squareSize);
+    const int row = floor((tapPoint.y - square.origin.y)/squareSize);
+    if (col != self.selectedColumn || row != self.selectedRow) {
+        NSLog(@"tapped square at row %d, col %d",row,col);
+        _selectedColumn = col;
+        _selectedRow = row;
+        [self setNeedsDisplay];
+    }
+}
+/*
 -(void)handleFingerTap:(UIGestureRecognizer*)sender {
     const CGPoint tapPoint = [sender locationInView:sender.view];
     const CGRect square = [self boardSquare];
@@ -36,13 +51,7 @@
                 _selectedColumn = col;
                 [self setNeedsDisplay];
             //}
-}
-
--(void)addTapGestureRecognizer{
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleFingerTap:)];
-    tapGestureRecognizer.numberOfTapsRequired = 1;
-    [self addGestureRecognizer:tapGestureRecognizer];
-}
+}*/
 
 -(CGRect)boardSquare {
     const CGRect myBounds = self.bounds;
@@ -81,30 +90,11 @@
     }
     
     if (self.selectedRow >= 0 && self.selectedColumn >= 0) {
-        //CGContextSetRGBFillColor(context, 0, 0, 0, 0.7);
+        CGContextSetRGBFillColor(context, 0, 0.6, 0, 0.3);
         //[[UIColor blueColor] setFill];
         CGContextFillRect(context, CGRectMake(boardSquare.origin.x + self.selectedColumn*squareSize, boardSquare.origin.y + self.selectedRow*squareSize, squareSize, squareSize));
     }
-    /*
-    const CGFloat delta = boardSquare.size.height/3;
-    const CGFloat d = delta/3;
-    const CGFloat s = d/3;
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:30], NSForegroundColorAttributeName: [UIColor blackColor] };
-    
-    const NSString *text = [NSString stringWithFormat:@"%d", 8];
-    const CGSize textSize = [text sizeWithAttributes:attributes];
-    const CGFloat x = boardSquare.origin.x + 0*d + 0.5*(d - textSize.width);
-    const CGFloat y = boardSquare.origin.y + 0*d + 0.5*(d - textSize.height);
-    const CGRect textRect = CGRectMake(x, y, textSize.width, textSize.height);
-    [text drawInRect:textRect withAttributes:attributes];
-    
-    NSDictionary *attributesPen = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:10], NSForegroundColorAttributeName: [UIColor blackColor] };
-    const NSString *pencilText = [NSString stringWithFormat:@"%d",2];
-    const CGSize penTextSize = [text sizeWithAttributes:attributesPen];
-    const CGFloat penX = boardSquare.origin.x + 0 + 0.5 * (s- penTextSize.width);
-    const CGFloat penY = boardSquare.origin.y + 0 + 0.5 * (s - penTextSize.height);
-    const CGRect penText = CGRectMake(penX,penY, penTextSize.width, penTextSize.height);
-    [pencilText drawInRect: penText withAttributes: attributesPen]; */
+   
     
 }
 

@@ -10,6 +10,7 @@
 
 @interface SudokuModel : NSObject
 
+-(id)init;
 -(void)freshGame:(NSString*)boardString;
 -(int)numberAtRow:(int)r Column:(int)c;
 -(void)setNumber:(int)n AtRow:(int)r Column:(int)c;
