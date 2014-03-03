@@ -9,9 +9,10 @@
 #import "SudokuModel.h"
 
 @implementation SudokuModel{
-    const int SudokuBoard_game[9][9];
-    const int SudokuBoard_fixed[9][9];
-    const int SudokuBoard_pencil[9][9][3][3];
+    unsigned int SudokuBoard_game[9][9];
+    unsigned int SudokuBoard_fixed[9][9];
+    unsigned int SudokuBoard_pencil[9][9][3][3];
+    
     
     
     
@@ -38,12 +39,24 @@
 }
 -(id)init{
     
+    for (int i = 0; i < 9; i ++) {
+        for (int j = 0; j < 9; j++){
+            SudokuBoard_game[i][j] = 0;
+            SudokuBoard_fixed[i][j] = 0;
+            for (int k = 0; k < 3; k ++) {
+                for (int l = 0; l < 3 ; l++) {
+                    SudokuBoard_pencil[i][j][k][l] = 0;
+                }
+            }
+            
+        }
+    }
     
     return self;
 }
 
 -(void)freshGame:(NSString*)boardString{
-    
+    //If number at row col in SudokuBoard_game != 0 then row col in SudokuBoard_fixed = 1 for true
 }
 
 -(int)numberAtRow:(int)r Column:(int)c{
@@ -64,7 +77,13 @@
 }
 
 -(BOOL)anyPencilsSetAtRow:(int)r Column:(int)c{
-    return YES;
+    BOOL isPencil = NO;/*
+    for (int i = 0; i < 3; <#increment#>) {
+        <#statements#>
+    }*/
+    
+    
+    return isPencil;
 }
 
 -(int)numberOfPencilsSetAtRow:(int)r Column:(int)c{

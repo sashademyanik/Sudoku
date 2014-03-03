@@ -21,6 +21,15 @@
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]){
+        NSLog(@"ChessBoardView:initWithCoder:");
+        _selectedRow = _selectedColumn = -1;
+        // NO TOUCHY [self addTapGestureRecognizer];
+    }
+    return self;
+}
+
 -(IBAction)handleTap:(UITapGestureRecognizer*)sender{
     NSLog(@"handleTap");
     const CGRect square = [self boardSquare];
