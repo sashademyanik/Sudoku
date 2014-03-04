@@ -30,6 +30,11 @@
     return self;
 }
 
+-(void)setRow:(int)row Col:(int)col {
+    _selectedRow = row;
+    _selectedColumn = col;
+}
+/*
 -(IBAction)handleTap:(UITapGestureRecognizer*)sender{
     NSLog(@"handleTap");
     const CGRect square = [self boardSquare];
@@ -43,7 +48,7 @@
         _selectedRow = row;
         [self setNeedsDisplay];
     }
-}
+}*/
 /*
  const CGFloat delta = boardSquare.size.height/3;
  const CGFloat d = delta/3;

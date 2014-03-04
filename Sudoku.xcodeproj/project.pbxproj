@@ -24,6 +24,8 @@
 		F7D2927D18B6CB0D0034AAF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7D2927B18B6CB0D0034AAF2 /* InfoPlist.strings */; };
 		F7D2927F18B6CB0D0034AAF2 /* SudokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D2927E18B6CB0D0034AAF2 /* SudokuTests.m */; };
 		F7D2928A18B6CE3D0034AAF2 /* SudokuBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D2928918B6CE3D0034AAF2 /* SudokuBoard.m */; };
+		F7E7C01518C654F7008B02E0 /* simple.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7E7C01418C654F7008B02E0 /* simple.plist */; };
+		F7E7C01718C654FD008B02E0 /* hard.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7E7C01618C654FD008B02E0 /* hard.plist */; };
 		F7F2D02718C2CDCE005DB3A9 /* SudokuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2D02618C2CDCE005DB3A9 /* SudokuModel.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		F7D2927E18B6CB0D0034AAF2 /* SudokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SudokuTests.m; sourceTree = "<group>"; };
 		F7D2928818B6CE3D0034AAF2 /* SudokuBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuBoard.h; sourceTree = "<group>"; };
 		F7D2928918B6CE3D0034AAF2 /* SudokuBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuBoard.m; sourceTree = "<group>"; };
+		F7E7C01418C654F7008B02E0 /* simple.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = simple.plist; sourceTree = "<group>"; };
+		F7E7C01618C654FD008B02E0 /* hard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hard.plist; sourceTree = "<group>"; };
 		F7F2D02518C2CDCE005DB3A9 /* SudokuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuModel.h; sourceTree = "<group>"; };
 		F7F2D02618C2CDCE005DB3A9 /* SudokuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +139,8 @@
 				F76597B918C01D3B00AF37A5 /* MenuButtonView.m */,
 				F7F2D02518C2CDCE005DB3A9 /* SudokuModel.h */,
 				F7F2D02618C2CDCE005DB3A9 /* SudokuModel.m */,
+				F7E7C01418C654F7008B02E0 /* simple.plist */,
+				F7E7C01618C654FD008B02E0 /* hard.plist */,
 				F7D2926B18B6CB0D0034AAF2 /* Images.xcassets */,
 				F7D2925718B6CB0D0034AAF2 /* Supporting Files */,
 			);
@@ -249,6 +255,8 @@
 			files = (
 				F7D2926718B6CB0D0034AAF2 /* Main_iPad.storyboard in Resources */,
 				F7D2926C18B6CB0D0034AAF2 /* Images.xcassets in Resources */,
+				F7E7C01518C654F7008B02E0 /* simple.plist in Resources */,
+				F7E7C01718C654FD008B02E0 /* hard.plist in Resources */,
 				F7D2926418B6CB0D0034AAF2 /* Main_iPhone.storyboard in Resources */,
 				F7D2925B18B6CB0D0034AAF2 /* InfoPlist.strings in Resources */,
 			);

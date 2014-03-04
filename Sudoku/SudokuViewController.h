@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SudokuBoard.h"
+#import "MenuButtonView.h"
+#import "SudokuModel.h"
 
 @interface SudokuViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIView *BoardView;
-@property (weak, nonatomic) IBOutlet UIView *ButtonView;
+@property (weak, nonatomic) IBOutlet SudokuBoard *BoardView;
+@property (weak, nonatomic) IBOutlet MenuButtonView *ButtonView;
+@property (readonly, assign, nonatomic) NSInteger selectedRow;
+@property (readonly, assign, nonatomic) NSInteger selectedColumn;
+@property SudokuModel *sudokuModel;
 
 @end

@@ -7,23 +7,23 @@
 //
 
 #import "SudokuViewController.h"
-#import "SudokuBoard.h"
-#import "MenuButtonView.h"
-#import "SudokuModel.h"
+
 
 @interface SudokuViewController ()
 
 @end
 
 @implementation SudokuViewController{
-    //SudokuBoard *boardView;
-    //MenuButtonView *buttonsView;
+    
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.sudokuModel = [[SudokuModel alloc] init];
+    _selectedRow = _selectedColumn = -1;
     
 
 }
@@ -33,6 +33,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(IBAction)handleTap:(UITapGestureRecognizer*)sender{
+    NSLog(@"handleTap");
+    const CGRect square = [self.BoardView boardSquare];
+    const CGPoint tapPoint = [sender locationInView:_BoardView];
+    const CGFloat squareSize = square.size.width/9;
+    const int col = floor((tapPoint.x - square.origin.x)/squareSize);
+    const int row = floor((tapPoint.y - square.origin.y)/squareSize);
+    [self.BoardView setRow:self.selectedRow Col:self.selectedColumn];
+    if (col != self.selectedColumn || row != self.selectedRow) {
+        NSLog(@"tapped square at row %d, col %d",row,col);
+        _selectedColumn = col;
+        _selectedRow = row;
+        [self.BoardView setNeedsDisplay];
+    }
+}
+
+- (IBAction)buttonPressed:(id)sender {
+    
+}
+
+
+
 
 -(void)viewWillLayoutSubviews {
     

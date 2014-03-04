@@ -14,6 +14,7 @@
 @property (readonly, assign, nonatomic) NSInteger selectedColumn;
 
 -(CGRect)boardSquare;
+-(void)setRow:(int)row Col:(int)col;
 
 
 @end
