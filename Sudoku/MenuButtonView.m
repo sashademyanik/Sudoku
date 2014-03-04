@@ -16,6 +16,8 @@
     if (self) {
         // Initialization code
         [self layoutSubviews];
+        self.pencil = NO;
+        
     }
     return self;
 }

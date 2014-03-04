@@ -115,5 +115,9 @@
     
 }
 
+-(void)drawPencilatRow:(int)row Col: (int)col{
+    
+}
+
 
 @end

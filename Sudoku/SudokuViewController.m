@@ -24,7 +24,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.sudokuModel = [[SudokuModel alloc] init];
     _selectedRow = _selectedColumn = -1;
-    
+    NSArray *simpleGames;
+    NSString *pathSimple = [[NSBundle mainBundle] pathForResource:@"simple" ofType:@"plist"];
+    simpleGames = [[NSArray alloc] initWithContentsOfFile:pathSimple];
+    NSString *newGame = [self randomGame:simpleGames];
 
 }
 
@@ -32,6 +35,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(NSString*)randomGame:(NSArray*) game {
+    const int n = [game count];
+    const int i = arc4random() % n;
+    return [game objectAtIndex:i];
 }
 
 -(IBAction)handleTap:(UITapGestureRecognizer*)sender{
@@ -42,15 +51,37 @@
     const int col = floor((tapPoint.x - square.origin.x)/squareSize);
     const int row = floor((tapPoint.y - square.origin.y)/squareSize);
     [self.BoardView setRow:self.selectedRow Col:self.selectedColumn];
-    if (col != self.selectedColumn || row != self.selectedRow) {
-        NSLog(@"tapped square at row %d, col %d",row,col);
-        _selectedColumn = col;
-        _selectedRow = row;
-        [self.BoardView setNeedsDisplay];
+    if (col != _selectedColumn || row != _selectedRow) {
+        if (self.sudokuModel != nil && ![self.sudokuModel numberIsFixedAtRow:row Column:col]) {
+            NSLog(@"tapped square at row %d, col %d",row,col);
+            _selectedColumn = col;
+            _selectedRow = row;
+            [self.BoardView setNeedsDisplay];
+        }
+        
     }
 }
 
-- (IBAction)buttonPressed:(id)sender {
+- (IBAction)buttonPressed:(UIButton*)sender {
+    if (sender.tag >=1 && sender.tag <= 9) {
+        if (_selectedColumn != -1 && _selectedRow != -1) {
+            //
+        }
+    }else if (sender.tag == 10){
+        if (self.ButtonView.pencil ==YES) {
+            self.ButtonView.pencil = NO;
+            sender.backgroundColor = [UIColor whiteColor];
+        }else{
+            self.ButtonView.pencil = YES;
+            sender.backgroundColor = [UIColor lightGrayColor];
+        }
+    }else if (sender.tag == 11){
+        
+    }else if (sender.tag == 12){
+        
+    }
+    [self.ButtonView setNeedsDisplay];
+    [self.BoardView setNeedsDisplay];
     
 }
 

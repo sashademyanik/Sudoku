@@ -10,4 +10,6 @@
 
 @interface MenuButtonView : UIView
 
+@property BOOL pencil;
+
 @end

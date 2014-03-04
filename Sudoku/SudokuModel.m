@@ -21,7 +21,6 @@
 -(id)init{
     arraySize = 9;
     penSize = 3;
-    NSLog(@" I have been inited");
     for (int i = 0; i < arraySize; i ++) {
         for (int j = 0; j < arraySize; j++){
             SudokuBoard_game[i][j] = 0;
@@ -53,6 +52,7 @@
 		}
 	}
 }
+
 
 -(int)numberAtRow:(int)r Column:(int)c{
     return SudokuBoard_game[r][c];
