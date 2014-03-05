@@ -12,6 +12,7 @@
     unsigned int SudokuBoard_game[9][9];
     unsigned int SudokuBoard_fixed[9][9];
     unsigned int SudokuBoard_pencil[9][9][3][3];
+    unsigned int SudokuBoard_conflict[9][9];
     int arraySize;
     int penSize;
 	NSArray *simple;
@@ -25,6 +26,7 @@
         for (int j = 0; j < arraySize; j++){
             SudokuBoard_game[i][j] = 0;
             SudokuBoard_fixed[i][j] = 0;
+            SudokuBoard_conflict[i][j] = 0;
             for (int k = 0; k < penSize; k ++) {
                 for (int l = 0; l < penSize ; l++) {
                     SudokuBoard_pencil[i][j][k][l] = 0;
@@ -37,8 +39,51 @@
     return self;
 }
 
+-(BOOL)isWon{
+    BOOL won = YES;
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            if (SudokuBoard_game[i][j] == 0 || SudokuBoard_conflict[i][j] != 0) {
+                won = NO;
+            }
+        }
+    }
+    return won;
+}
+
+-(int)getGameIndexRow:(int)row Column:(int)col{
+    return SudokuBoard_game[row][col];
+}
+-(int)getFixedIndexRow:(int)row Column:(int)col{
+    return SudokuBoard_fixed[row][col];
+}
+-(int)getPencilRow:(int)row Column:(int)col PRow:(int)pRow PCol:(int)pCol{
+    return SudokuBoard_pencil[row][col][pRow][pCol];
+}
+
+-(void)setConflictRow:(int)row Column:(int)col Num:(int)n{
+    NSLog(@"set row %d, col %d",row,col);
+    SudokuBoard_conflict[row][col] = n;
+}
+-(int)getConflictRow:(int)row Column:(int)col{
+    return SudokuBoard_conflict[row][col];
+}
+
 -(void)freshGame:(NSString*)boardString{
     //If number at row col in SudokuBoard_game != 0 then row col in SudokuBoard_fixed = 1 for true
+    for (int i = 0; i < arraySize; i ++) {
+        for (int j = 0; j < arraySize; j++){
+            SudokuBoard_game[i][j] = 0;
+            SudokuBoard_fixed[i][j] = 0;
+            SudokuBoard_conflict[i][j] = 0;
+            for (int k = 0; k < penSize; k ++) {
+                for (int l = 0; l < penSize ; l++) {
+                    SudokuBoard_pencil[i][j][k][l] = 0;
+                }
+            }
+            
+        }
+    }
 	int i = 0;
 	for(int j = 0; j < arraySize; j++){
 		for(int k = 0; k < arraySize; k++){

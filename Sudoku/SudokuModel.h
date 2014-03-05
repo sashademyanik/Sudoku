@@ -12,6 +12,9 @@
     
 
 -(id)init;
+-(int)getGameIndexRow:(int)row Column:(int)col;
+-(int)getFixedIndexRow:(int)row Column:(int)col;
+-(int)getPencilRow:(int)row Column:(int)col PRow:(int)pRow PCol:(int)pCol;
 -(void)freshGame:(NSString*)boardString;
 -(int)numberAtRow:(int)r Column:(int)c;
 -(void)setNumber:(int)n AtRow:(int)r Column:(int)c;
@@ -23,5 +26,8 @@
 -(void)setPencil:(int)n AtRow:(int)r Column:(int)c;
 -(void)clearPencil:(int)n AtRow:(int)r Column:(int)c;
 -(void)clearAllPencilsAtRow:(int)r Column:(int)c;
+-(void)setConflictRow:(int)row Column:(int)col Num:(int)n;
+-(int)getConflictRow:(int)row Column:(int)col;
+-(BOOL)isWon;
 
 @end

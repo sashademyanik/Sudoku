@@ -22,5 +22,5 @@
 -(CGRect)boardSquare;
 -(void)setRow:(int)row Col:(int)col;
 -(void)drawNumAtRow:(int)row Column:(int)col Number:(NSInteger)n;
--(void)drawPencilAtRow:(int)row Column: (int)col Number:(NSInteger)n;
+-(void)drawPencilAtRow:(int)row Column: (int)col PRow:(int)k PCol:(int)l Number:(NSInteger)n;
 @end
