@@ -26,6 +26,10 @@
         NSLog(@"ChessBoardView:initWithCoder:");
         _selectedRow = _selectedColumn = -1;
         // NO TOUCHY [self addTapGestureRecognizer];
+        _square = [self boardSquare];
+        _delta = self.square.size.height/3;
+        _d = self.delta/3;
+        _s = self.d/3;
     }
     return self;
 }
@@ -115,8 +119,26 @@
     
 }
 
--(void)drawPencilatRow:(int)row Col: (int)col{
+-(void)drawNumAtRow:(int)row Column:(int)col Number:(NSInteger)n{
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:30], NSForegroundColorAttributeName: [UIColor blackColor] };
     
+    const NSString *text = [NSString stringWithFormat:@"%d", 8];
+    const CGSize textSize = [text sizeWithAttributes:attributes];
+    const CGFloat x = self.square.origin.x + col*self.d + 0.5*(self.d - textSize.width);
+    const CGFloat y = self.square.origin.y + row*self.d + 0.5*(self.d - textSize.height);
+    const CGRect textRect = CGRectMake(x, y, textSize.width, textSize.height);
+    [text drawInRect:textRect withAttributes:attributes];
+}
+
+-(void)drawPencilAtRow:(int)row Column: (int)col Number:(NSInteger)n{
+    NSDictionary *attributesPen = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:10], NSForegroundColorAttributeName: [UIColor blackColor] };
+    
+    const NSString *pencilText = [NSString stringWithFormat:@"%d",2];
+    const CGSize penTextSize = [pencilText sizeWithAttributes:attributesPen];
+    const CGFloat penX = self.square.origin.x + col * self.s + 0.5 * (self.s- penTextSize.width);
+    const CGFloat penY = self.square.origin.y + row * self.s + 0.5 * (self.s - penTextSize.height);
+    const CGRect penText = CGRectMake(penX,penY, penTextSize.width, penTextSize.height);
+    [pencilText drawInRect: penText withAttributes: attributesPen];
 }
 
 

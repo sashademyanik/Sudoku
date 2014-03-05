@@ -23,11 +23,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.sudokuModel = [[SudokuModel alloc] init];
+    self.BoardView.model = self.sudokuModel;
     _selectedRow = _selectedColumn = -1;
     NSArray *simpleGames;
     NSString *pathSimple = [[NSBundle mainBundle] pathForResource:@"simple" ofType:@"plist"];
     simpleGames = [[NSArray alloc] initWithContentsOfFile:pathSimple];
     NSString *newGame = [self randomGame:simpleGames];
+    [self.sudokuModel freshGame:newGame];
 
 }
 
@@ -66,6 +68,8 @@
     if (sender.tag >=1 && sender.tag <= 9) {
         if (_selectedColumn != -1 && _selectedRow != -1) {
             //
+            [self.sudokuModel setNumber:sender.tag AtRow:self.selectedRow Column:self.selectedColumn];
+            [self.BoardView drawNumAtRow:self.selectedRow Column:self.selectedColumn Number:sender.tag];
         }
     }else if (sender.tag == 10){
         if (self.ButtonView.pencil ==YES) {
