@@ -62,7 +62,6 @@
 }
 
 -(void)setConflictRow:(int)row Column:(int)col Num:(int)n{
-    NSLog(@"set row %d, col %d",row,col);
     SudokuBoard_conflict[row][col] = n;
 }
 -(int)getConflictRow:(int)row Column:(int)col{

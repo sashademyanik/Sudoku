@@ -27,6 +27,8 @@
 		F7E7C01518C654F7008B02E0 /* simple.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7E7C01418C654F7008B02E0 /* simple.plist */; };
 		F7E7C01718C654FD008B02E0 /* hard.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7E7C01618C654FD008B02E0 /* hard.plist */; };
 		F7F2D02718C2CDCE005DB3A9 /* SudokuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2D02618C2CDCE005DB3A9 /* SudokuModel.m */; };
+		F7F58DFF18C7CCDA00BD35A7 /* Icon_Sudoku_212.png in Resources */ = {isa = PBXBuildFile; fileRef = F7F58DFE18C7CCDA00BD35A7 /* Icon_Sudoku_212.png */; };
+		F7F58E0118C7CDD500BD35A7 /* iOS Simulator Screen shot Mar 4, 2014, 8.19.08 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = F7F58E0018C7CDD500BD35A7 /* iOS Simulator Screen shot Mar 4, 2014, 8.19.08 PM.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		F7E7C01618C654FD008B02E0 /* hard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hard.plist; sourceTree = "<group>"; };
 		F7F2D02518C2CDCE005DB3A9 /* SudokuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuModel.h; sourceTree = "<group>"; };
 		F7F2D02618C2CDCE005DB3A9 /* SudokuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuModel.m; sourceTree = "<group>"; };
+		F7F58DFE18C7CCDA00BD35A7 /* Icon_Sudoku_212.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Sudoku_212.png; sourceTree = "<group>"; };
+		F7F58E0018C7CDD500BD35A7 /* iOS Simulator Screen shot Mar 4, 2014, 8.19.08 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen shot Mar 4, 2014, 8.19.08 PM.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				F7F2D02618C2CDCE005DB3A9 /* SudokuModel.m */,
 				F7E7C01418C654F7008B02E0 /* simple.plist */,
 				F7E7C01618C654FD008B02E0 /* hard.plist */,
+				F7F58DFE18C7CCDA00BD35A7 /* Icon_Sudoku_212.png */,
+				F7F58E0018C7CDD500BD35A7 /* iOS Simulator Screen shot Mar 4, 2014, 8.19.08 PM.png */,
 				F7D2926B18B6CB0D0034AAF2 /* Images.xcassets */,
 				F7D2925718B6CB0D0034AAF2 /* Supporting Files */,
 			);
@@ -257,8 +263,10 @@
 				F7D2926C18B6CB0D0034AAF2 /* Images.xcassets in Resources */,
 				F7E7C01518C654F7008B02E0 /* simple.plist in Resources */,
 				F7E7C01718C654FD008B02E0 /* hard.plist in Resources */,
+				F7F58DFF18C7CCDA00BD35A7 /* Icon_Sudoku_212.png in Resources */,
 				F7D2926418B6CB0D0034AAF2 /* Main_iPhone.storyboard in Resources */,
 				F7D2925B18B6CB0D0034AAF2 /* InfoPlist.strings in Resources */,
+				F7F58E0118C7CDD500BD35A7 /* iOS Simulator Screen shot Mar 4, 2014, 8.19.08 PM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

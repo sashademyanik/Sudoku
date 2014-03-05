@@ -16,7 +16,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        NSLog(@"ChessBoardView:initWithFrame:");
         _selectedRow = _selectedColumn = -1;
     }
     return self;
@@ -24,7 +23,6 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]){
-        NSLog(@"ChessBoardView:initWithCoder:");
         _selectedRow = _selectedColumn = -1;
         // NO TOUCHY [self addTapGestureRecognizer];
         _square = [self boardSquare];
@@ -125,7 +123,6 @@
 
 -(void)drawPencilAtRow:(int)row Column: (int)col PRow:(int)k PCol:(int)l Number:(NSInteger)n{
     NSDictionary *attributesPen = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:10], NSForegroundColorAttributeName: [UIColor blackColor] };
-    NSLog(@"row: %d, col: %d, k: %d, l: %d",row,col,k,l);
     const NSString *pencilText = [NSString stringWithFormat:@"%d",n];
     const CGSize penTextSize = [pencilText sizeWithAttributes:attributesPen];
     const CGFloat penX = self.square.origin.x + col * self.d + 0.5 * (self.d - penTextSize.width) + (l-1)*self.s;

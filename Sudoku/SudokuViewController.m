@@ -51,7 +51,6 @@
 }
 
 -(IBAction)handleTap:(UITapGestureRecognizer*)sender{
-    NSLog(@"handleTap");
     const CGRect square = [self.BoardView boardSquare];
     const CGPoint tapPoint = [sender locationInView:_BoardView];
     const CGFloat squareSize = square.size.width/9;
@@ -59,7 +58,7 @@
     const int row = floor((tapPoint.y - square.origin.y)/squareSize);
     if (col != _selectedColumn || row != _selectedRow) {
         if (self.sudokuModel != nil && ![self.sudokuModel numberIsFixedAtRow:row Column:col]) {
-            NSLog(@"tapped square at row %d, col %d",row,col);
+            //NSLog(@"tapped square at row %d, col %d",row,col);
             _selectedColumn = col;
             _selectedRow = row;
             [self.BoardView setRow:self.selectedRow Col:self.selectedColumn];
@@ -151,7 +150,7 @@
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
-    NSLog(@"actionSheet:didDismissWithButtonIndex: %d", buttonIndex);
+    //NSLog(@"actionSheet:didDismissWithButtonIndex: %d", buttonIndex);
     if (buttonIndex == 0) {
         NSString *newGame = [self randomGame:simpleGames];
         [self.sudokuModel freshGame:newGame];
